@@ -1,3 +1,4 @@
+import ContactMe from "./ui/contact";
 import Footer from "./ui/footer";
 import Hero from "./ui/hero/hero";
 import StarCanvas from "./ui/hero/stars";
@@ -10,6 +11,7 @@ export default function Home() {
         <StarCanvas />
         <Hero />
         <Story />
+        <ContactMe />
       </main>
     </>
   );

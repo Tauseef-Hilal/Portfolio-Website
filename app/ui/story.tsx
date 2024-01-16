@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Story() {
   return (
     <div
-      className="flex min-h-screen items-center justify-between px-14 md:px-32 relative"
+      className="flex min-h-screen items-center justify-between px-8 md:px-32 relative"
       id="story"
     >
       <div className="flex flex-col justify-center gap-2 min-h-screen w-[700px]">
