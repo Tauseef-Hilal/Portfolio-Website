@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import Navbar from "./ui/navbar";
+import Footer from "./ui/footer";
+import "./ui/globals.css";
 
 export const metadata: Metadata = {
   title: "Tauseef Tantary | Portfolio",
@@ -13,7 +15,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header className="w-full">
+          <Navbar />
+        </header>
+        {children}
+        <footer>
+          <Footer />
+        </footer>
+      </body>
     </html>
   );
 }

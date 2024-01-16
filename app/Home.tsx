@@ -1,12 +1,15 @@
-import Footer from "./ui/footer";
 import Hero from "./ui/hero/hero";
 import StarCanvas from "./ui/hero/stars";
+import Navbar from "./ui/navbar";
 import Story from "./ui/story";
 
 export default function Home() {
   return (
     <>
-      <main className="flex flex-col">
+      <header className="w-full">
+        <Navbar />
+      </header>
+      <main className="h-full w-full flex flex-col">
         <StarCanvas />
         <Hero />
         <Story />

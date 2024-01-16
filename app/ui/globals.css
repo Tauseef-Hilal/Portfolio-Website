@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Reload";
+  src: url("/fonts/Reload-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reload";
+  src: url("/fonts/Reload-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reload";
+  src: url("/fonts/Reload-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Reload";
+  src: url("/fonts/Reload-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+:root {
+  --foreground-rgb: rgb(0, 0, 0);
+  --background-rgb: rgb(214, 219, 220);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: rgb(255, 255, 255);
+    --background-rgb: rgb(0, 0, 0);
+  }
+}
+
+body {
+  font-family: Reload, Arial, Helvetica, sans-serif;
+  color: var(--foreground-rgb);
+  background: var(--background-rgb);
+  height: 100vh;
+  width: 100vw;
+}
