@@ -9,8 +9,8 @@ export default function Story() {
       id="story"
     >
       <div className="flex flex-col justify-center gap-2 min-h-screen w-[700px]">
-        <h2 className="text-xl text-slate-200">MY STORY </h2>
-        <p className="md:text-2xl font-medium text-justify mb-4 md:mb-2">
+        <h2 className=" text-lg text-gray-200 font-light">MY STORY </h2>
+        <p className="text-xl text-justify mb-4 md:mb-2">
           SPARKED BY CODE IN 5TH GRADE, I TURNED CURIOSITY INTO DIGITAL
           CREATION. DESPITE DOUBTS, MY LOVE FOR PROGRAMMING PERSISTED. NOW, A
           COMPUTER SCIENCE MAJOR IN COLLEGE, BLENDING MOBILE, WEB, AND SOFTWARE
