@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="py-12 flex flex-col gap-8 relative">
-      <hr className="border-[#2a2c3774] border-4" />
+      <hr className="border-[#2a2c3773] border-4" />
       <div className="grid grid-flow-col place-content-center text-center gap-24 px-4">
         <ul>
           <span className="text-xl font-light">Social Media</span>
