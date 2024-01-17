@@ -21,22 +21,15 @@ export default function Story() {
           <Button text="Read my full bio" />
         </Link>
       </div>
-      <div className="hidden md:flex flex-col justify-center">
+      <div className="absolute z-[-1] lg:static lg:flex flex-col justify-center">
         <Image
           src="mainIconsDark.svg"
           width={500}
           height={500}
           alt="Hero Icons"
+          className="object-cover opacity-30 lg:opacity-100"
         />
       </div>
-      <video
-        muted
-        loop
-        autoPlay
-        className="absolute left-0 z-[-1] rotate-180 h-full w-full object-cover"
-      >
-        <source src="/encryption.webm" type="video/webm" />
-      </video>
     </div>
   );
 }

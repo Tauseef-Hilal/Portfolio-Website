@@ -8,7 +8,7 @@ import { GiSparkles } from "react-icons/gi";
 export default function ProjectSection() {
   return (
     <div className="min-h-screen px-8 xl:px-8 2xl:px-40">
-      <h2 className="text-xl font-light mb-8 backdrop-blur-md">
+      <h2 className="text-xl text-center md:text-left font-light mb-8 backdrop-blur-md">
         Projects I have worked on
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center bg-[#00000079]">

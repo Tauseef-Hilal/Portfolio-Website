@@ -1,6 +1,6 @@
 export default function Biography() {
   return (
-    <div className="flex flex-col gap-4 text-justify text-sm px-10 md:px-40 md:text-2xl">
+    <div className="flex flex-col gap-4 font-light text-justify text-sm px-10 md:px-40 xl:px-72 md:text-2xl">
       <h1 className="text-4xl mt-32">
         <span className="text-slate-200 text-2xl">Full</span> <br />
         <span>Biography</span>

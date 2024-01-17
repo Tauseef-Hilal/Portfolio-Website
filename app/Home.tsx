@@ -1,6 +1,6 @@
 import Hero from "./ui/hero/hero";
 import StarCanvas from "./ui/hero/stars";
-import Navbar from "./ui/navbar";
+import Navbar from "./ui/navbar/navbar";
 import Story from "./ui/story";
 
 export default function Home() {

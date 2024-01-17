@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "./ui/navbar";
+import Navbar from "./ui/navbar/navbar";
 import Footer from "./ui/footer";
 import "./ui/globals.css";
 
