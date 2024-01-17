@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Button from "./buttons";
+import { sendMail } from "../lib/actions";
 
 export default function ContactMe() {
   return (
     <div className="mt-64 px-8 md:px-8 xl:px-56">
       <h2 className="text-xl font-light">Contact Me</h2>
       <div className="flex justify-between h-[240px] gap-2 relative">
-        <form className="flex flex-col gap-2 w-full">
+        <form action={sendMail} className="flex flex-col gap-2 w-full">
           <textarea
             placeholder="Enter your message"
             name="message"
@@ -23,7 +24,13 @@ export default function ContactMe() {
               id="email"
               className="bg-black border border-gray-800 p-2 text-sm font-light w-full focus:border-gray-400"
             />
-            <Button text="Send" />
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              value="Send"
+              className="uppercase bg-white text-black text-sm w-max px-4 py-2 flex items-center gap-2 border border-black hover:border-white hover:bg-black hover:text-white cursor-pointer"
+            />
           </div>
         </form>
         <Image
