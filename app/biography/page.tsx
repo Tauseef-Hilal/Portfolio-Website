@@ -1,6 +1,6 @@
-export default function Biography() {
+export default function BiographyPage() {
   return (
-    <div className="flex flex-col gap-4 font-light text-justify text-sm px-10 md:px-40 xl:px-72 md:text-2xl">
+    <main className="flex flex-col gap-4 font-light text-justify text-sm px-8 md:px-40 xl:px-72 md:text-2xl">
       <h1 className="text-4xl mt-32">
         <span className="text-slate-200 text-2xl">Full</span> <br />
         <span>Biography</span>
@@ -53,6 +53,6 @@ export default function Biography() {
         weaves a narrative of innovation and possibility.
       </p>
       <p>Rest coming soon ...</p>
-    </div>
+    </main>
   );
 }

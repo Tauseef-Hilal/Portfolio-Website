@@ -1,19 +1,18 @@
-import ContactMe from "./ui/contact";
-import Footer from "./ui/footer";
-import Hero from "./ui/hero/hero";
-import StarCanvas from "./ui/hero/stars";
-import ProjectSection from "./ui/projects";
-import Story from "./ui/story";
+import ContactSection from "./ui/ContactSection";
+import HeroSection from "./ui/Hero/HeroSection";
+import StarCanvas from "./ui/Hero/StarBackground";
+import ProjectSection from "./ui/ProjectSection";
+import StorySection from "./ui/StorySection";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <main className="flex flex-col">
+      <main className="px-8">
         <StarCanvas />
-        <Hero />
-        <Story />
+        <HeroSection />
+        <StorySection />
         <ProjectSection />
-        <ContactMe />
+        <ContactSection />
       </main>
     </>
   );

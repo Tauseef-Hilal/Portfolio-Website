@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-three/drei": "^9.93.1",
     "@react-three/fiber": "^8.15.14",
+    "framer-motion": "^10.18.0",
     "maath": "^0.10.7",
     "next": "14.0.4",
     "nodemailer": "^6.9.8",

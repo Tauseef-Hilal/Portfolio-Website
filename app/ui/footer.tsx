@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="py-12 flex flex-col gap-8 relative">
+    <footer className="py-12 flex flex-col gap-8 relative">
       <hr className="border-[#2a2c3774] border-4" />
       <div className="grid grid-flow-col place-content-center text-center gap-24 px-4">
         <ul>
@@ -49,6 +49,6 @@ export default function Footer() {
         &copy; Copyright 2024{" "}
         <span className="font-medium">Tauseef Tantary</span>
       </span>
-    </div>
+    </footer>
   );
 }
