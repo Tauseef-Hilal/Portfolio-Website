@@ -1,34 +1,30 @@
 "use server";
-//@ts-ignore
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 
-export async function sendMail(formData: FormData) {
+export type FormResponse = {
+  success: boolean;
+  message: string;
+};
+
+export async function sendMail(formData: FormData): Promise<FormResponse> {
   const message = formData.get("message");
   const email = formData.get("email");
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    auth: {
-      user: process.env.NODEMAILER_EMAIL,
-      pass: process.env.NODEMAILER_PASS,
-    },
-    secure: true,
-    timeout: 10000,
-  });
-
-  const mailOptions = {
-    from: process.env.NODEMAILER_EMAIL,
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+  const msg = {
+    from: process.env.SENDER_EMAIL,
     to: process.env.RECEIVER_EMAIL,
     subject: "Portfolio Mail",
     text: `From: ${email}\n\n${message}`,
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    return { success: true };
+    //@ts-ignore
+    await sgMail.send(msg);
+    console.log("Email sent");
+    return { success: true, message: "Email Sent!" };
   } catch (error) {
     console.error(error);
-    return { success: false, error: "Error sending email" };
+    return { success: false, message: "Couldn't Send Email!" };
   }
 }
