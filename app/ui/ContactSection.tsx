@@ -28,7 +28,7 @@ export default function ContactSection() {
   }
 
   return (
-    <div className="mt-64 xl:px-48">
+    <section className="mt-64 lg:px-20 xl:px-48 2xl:px-56">
       <h2 className="text-xl font-light">Contact Me</h2>
       <div className="flex justify-between h-[240px] gap-2 relative">
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
@@ -88,9 +88,9 @@ export default function ContactSection() {
           width={300}
           height={240}
           alt="Spaceman"
-          className="absolute z-[-1] h-[81%] md:h-full md:relative md:block object-cover w-full border border-gray-800 transition-all hover:scale-110"
+          className="absolute z-[-1] h-[81%] md:h-full md:relative md:block object-cover w-full border border-gray-800 transition-all"
         />
       </div>
-    </div>
+    </section>
   );
 }
