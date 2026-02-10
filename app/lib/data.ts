@@ -2,6 +2,13 @@ import { Project } from "./definitions";
 
 export const projects: Project[] = [
   {
+    title: "Homelab",
+    description:
+      "A self-hosted system that provides private user storage, local file sharing, and messaging within a LAN. It's designed to work entirely on LAN, with modular components for future extensions like automation, dashboards, and AI helpers.",
+    link: "https://github.com/Tauseef-Hilal/homelab",
+    imagePath: "/images/homelab.png",
+  },
+  {
     title: "Fullstack WhatsApp Clone",
     description:
       "A fullstack WhatsApp clone built from scratch in Flutter, giving the closest WhatsApp experience, with features like real-time messaging, efficient media transmission and voice chat.",
@@ -47,12 +54,5 @@ export const projects: Project[] = [
       "A simple automation program that keeps your desktop clean and organized",
     link: "https://github.com/Tauseef-Hilal/DesktopOrganiser",
     imagePath: "/images/organiser.jpg",
-  },
-  {
-    title: "TicTacToe AI",
-    description:
-      "A simple Tic-Tac-Toe game built with Next.js, featuring two game modes: vs human and vs AI.",
-    link: "https://github.com/Tauseef-Hilal/Tic-Tac-Toe",
-    imagePath: "/images/ttt.jpg",
   },
 ];

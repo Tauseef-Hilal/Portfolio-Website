@@ -8,11 +8,11 @@ export default function HomePage() {
   return (
     <>
       <main className="px-8">
-        <StarCanvas />
+        {/* <StarCanvas /> */}
         <HeroSection />
         <StorySection />
         <ProjectSection />
-        <ContactSection />
+        <ContactSection />x
       </main>
     </>
   );

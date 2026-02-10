@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { HiMiniSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 
 export default function BackgroundMusicButton({
@@ -13,12 +13,15 @@ export default function BackgroundMusicButton({
     "paused"
   );
 
-  function toggleAudio() {
+  useEffect(() => {
     if (!audioPlayerRef.current) {
       audioPlayerRef.current = new Audio("/music/background.mp3");
-      audioPlayerRef.current.onended = (_) => {
-        audioPlayerRef.current?.play();
-      };
+    }
+  }, []);
+
+  function toggleAudio() {
+    if (!audioPlayerRef.current) {
+      return;
     }
 
     if (playerState == "playing") {

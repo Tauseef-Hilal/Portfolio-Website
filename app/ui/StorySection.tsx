@@ -9,13 +9,13 @@ export default function StorySection() {
       id="story"
     >
       <div className="flex flex-col justify-center gap-2 min-h-screen lg:px-8 w-[700px]">
-        <h2 className=" text-lg text-gray-200 font-light">MY STORY </h2>
-        <p className="text-xl text-justify mb-4 md:mb-2">
-          SPARKED BY CODE IN 5TH GRADE, I TURNED CURIOSITY INTO DIGITAL
-          CREATION. DESPITE DOUBTS, MY LOVE FOR PROGRAMMING PERSISTED. NOW, A
-          COMPUTER SCIENCE MAJOR IN COLLEGE, BLENDING MOBILE, WEB, AND SOFTWARE
-          DEVELOPMENT SKILLS. DEDICATED TO UNLEASHING DIGITAL WONDERS ON THE
-          HORIZON.
+        <h2 className="text-lg text-gray-200">MY STORY </h2>
+        <p className="text-sm md:text-lg font-bold uppercase text-justify mb-4 md:mb-2">
+          STARTED BY CURIOSITY, SHAPED BY CONSTRAINTS.
+          <br /> NOW A FULL-STACK DEVELOPER WITH A STRONG BACKEND FOCUS,
+          BUILDING SCALABLE SYSTEMS IN THE JAVASCRIPT / TYPESCRIPT ECOSYSTEM.
+          OBSESSED WITH CLEAN ARCHITECTURE, REAL-WORLD TRADE-OFFS, AND
+          UNDERSTANDING WHY THINGS WORK.
         </p>
         <Link href={"/biography"}>
           <Button text="Read my full bio" />
