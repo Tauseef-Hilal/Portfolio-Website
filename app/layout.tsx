@@ -5,12 +5,18 @@ import { delius } from "./ui/fonts";
 import "./ui/globals.css";
 
 export const metadata: Metadata = {
-  title: "Tauseef Tantary",
+  title: "Tauseef Tantary | Full-Stack Engineer",
   description:
     "I'm a full-stack developer with a strong backend focus, working primarily in the JavaScript/TypeScript ecosystem. I build real-world systems involving APIs, authentication, storage, background jobs, and real-time communication, with an emphasis on clean architecture and long-term maintainability.",
   authors: { name: "Tauseef Hilal Tantary" },
   keywords:
-    "programming, coder, computer science, web development, software development",
+    "programming, coder, computer science, web development, software development, Full Stack Engineer",
+  openGraph: {
+    title: "Tauseef Tantary | Full-Stack Engineer",
+    description:
+      "I'm a full-stack developer with a strong backend focus, working primarily in the JavaScript/TypeScript ecosystem.",
+      images: "/images/tauseef1.png",
+  },
 };
 
 export default function RootLayout({
