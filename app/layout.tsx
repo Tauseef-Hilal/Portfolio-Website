@@ -5,17 +5,59 @@ import { delius } from "./ui/fonts";
 import "./ui/globals.css";
 
 export const metadata: Metadata = {
-  title: "Tauseef Tantary | Full-Stack Engineer",
+  metadataBase: new URL("https://tauseef.in"),
+
+  title: {
+    default: "Tauseef Tantary | Backend-Centric Full-Stack Engineer",
+    template: "%s | Tauseef Tantary",
+  },
+
   description:
-    "I'm a full-stack developer with a strong backend focus, working primarily in the JavaScript/TypeScript ecosystem. I build real-world systems involving APIs, authentication, storage, background jobs, and real-time communication, with an emphasis on clean architecture and long-term maintainability.",
-  authors: { name: "Tauseef Hilal Tantary" },
-  keywords:
-    "programming, coder, computer science, web development, software development, Full Stack Engineer",
+    "Backend-centric full-stack engineer building scalable systems with clean architecture, real-time infrastructure, and production-grade backend design.",
+
+  authors: [{ name: "Tauseef Hilal Tantary" }],
+
+  keywords: [
+    "Tauseef",
+    "Tauseef Tantary",
+    "Tauseef Hilal",
+    "Tauseef Hilal Tantary",
+    "Full Stack Engineer",
+    "Backend Engineer",
+    "Node.js",
+    "TypeScript",
+    "Software Engineer",
+    "Web Development",
+  ],
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
-    title: "Tauseef Tantary | Full-Stack Engineer",
+    type: "website",
+    url: "https://tauseef.in",
+    title: "Tauseef Tantary | Backend-Centric Full-Stack Engineer",
     description:
-      "I'm a full-stack developer with a strong backend focus, working primarily in the JavaScript/TypeScript ecosystem.",
-      images: "/images/tauseef1.png",
+      "Building scalable backend systems with clean architecture and real-time infrastructure.",
+    siteName: "Tauseef Tantary",
+    images: [
+      {
+        url: "/images/tauseef1.png",
+        width: 1200,
+        height: 630,
+        alt: "Tauseef Tantary",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Tauseef Tantary | Backend Engineer",
+    description:
+      "Building scalable backend systems with clean architecture and real-time infrastructure.",
+    images: ["/images/tauseef1.png"],
   },
 };
 

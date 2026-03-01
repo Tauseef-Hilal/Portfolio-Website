@@ -6,45 +6,53 @@ import { HiMiniSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 export default function BackgroundMusicButton({
   className,
 }: {
-  className: string;
+  className?: string;
 }) {
-  const audioPlayerRef = useRef<HTMLAudioElement | null>(null);
-  const [playerState, setPlayerState] = useState<"playing" | "paused">(
-    "paused"
-  );
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (!audioPlayerRef.current) {
-      audioPlayerRef.current = new Audio("/music/background.mp3");
-    }
+    const audio = new Audio("/music/background.mp3");
+
+    audio.loop = true;
+    audio.volume = 0.4;
+    audio.preload = "auto";
+
+    audioRef.current = audio;
+
+    return () => {
+      audio.pause();
+      audioRef.current = null;
+    };
   }, []);
 
-  function toggleAudio() {
-    if (!audioPlayerRef.current) {
-      return;
-    }
+  async function toggleAudio() {
+    if (!audioRef.current) return;
 
-    if (playerState == "playing") {
-      audioPlayerRef.current.pause();
-      setPlayerState("paused");
-    } else {
-      audioPlayerRef.current.play();
-      setPlayerState("playing");
+    try {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        await audioRef.current.play(); // safer async play
+        setIsPlaying(true);
+      }
+    } catch (err) {
+      console.error("Playback failed:", err);
     }
   }
+
   return (
-    <>
-      {playerState == "paused" ? (
-        <HiSpeakerXMark
-          onClick={toggleAudio}
-          className={`cursor-pointer ${className}`}
-        />
+    <button
+      onClick={toggleAudio}
+      className={`cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 ${className}`}
+      aria-label={isPlaying ? "Pause background music" : "Play background music"}
+    >
+      {isPlaying ? (
+        <HiMiniSpeakerWave />
       ) : (
-        <HiMiniSpeakerWave
-          onClick={toggleAudio}
-          className={`cursor-pointer ${className}`}
-        />
+        <HiSpeakerXMark />
       )}
-    </>
+    </button>
   );
 }

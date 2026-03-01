@@ -1,18 +1,28 @@
 import ContactSection from "./ui/ContactSection";
 import HeroSection from "./ui/Hero/HeroSection";
-import StarCanvas from "./ui/Hero/StarBackground";
 import ProjectSection from "./ui/ProjectSection";
 import StorySection from "./ui/StorySection";
 
 export default function HomePage() {
   return (
     <>
-      <main className="px-8">
-        {/* <StarCanvas /> */}
+      <main className="w-full bg-black">
         <HeroSection />
+
+        {/* Section divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+
         <StorySection />
+
+        {/* Section divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+
         <ProjectSection />
-        <ContactSection />x
+
+        {/* Section divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+
+        <ContactSection />
       </main>
     </>
   );
