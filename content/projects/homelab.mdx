@@ -2,13 +2,20 @@ export const meta = {
   title: "Homelab",
   shortDescription:
     "Self-hosted LAN storage, file sharing, and real-time messaging system.",
-  tech: ["Node.js", "PostgreSQL", "Redis", "Docker", "TypeScript"],
+  tech: [
+    "Next.js",
+    "Express.js",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "TypeScript",
+  ],
   githubUrl: "https://github.com/Tauseef-Hilal/homelab",
   liveUrl: "",
   imagePath: "/images/homelab.png",
   featured: true,
   year: 2025,
-  role: "Full-Stack Developer",
+  role: "Full-Stack Engineer",
   status: "Active",
   highlights: [
     "Built modular monorepo architecture with server and worker separation",
@@ -17,34 +24,112 @@ export const meta = {
   ],
 };
 
-# Project Homelab
-
-A LAN-first, secure, extensible personal cloud and automation hub.
+Here’s a **clean, elite-level GitHub README rewrite** tailored to your FAANG-style backend direction and system design mindset.
 
 ---
 
-## Overview
+# 🏠 Project Homelab
 
-Homelab is a self-hosted system that provides private user storage, local file sharing, and messaging within a LAN. It’s designed to work entirely offline, with modular components for future extensions like automation, dashboards, and AI helpers.
+**LAN-first • Secure • Modular • Offline-capable Personal Cloud**
 
----
+Homelab is a self-hosted, LAN-based multi-user system designed to function as a **private cloud and automation hub** — fully operational without internet dependency.
 
-## Current Progress
-
-### Authentication
-
-- Implemented using JWT access and refresh tokens.
-
-### Storage
-
-- Local file storage and management implemented.
-- Users can upload, organize, and manage their own files.
-- Data is private — users cannot access each other’s files.
+Built with a systems-first mindset, it emphasizes **security, modularity, background processing, and extensibility**, making it suitable for both personal infrastructure and scalable architectural experimentation.
 
 ---
 
-## Next Steps
+## 🚀 Vision
 
-- Local chat (1:1 and broadcast).
-- File sharing and permission system.
-- Add-on framework for modular features.
+Create a **secure, offline-first infrastructure layer** that supports:
+
+- Private multi-user storage
+- Real-time communication
+- Role-based collaboration
+- Modular automation and AI extensions
+
+Homelab is not just a file server — it’s a foundation for building a **personal distributed system inside a LAN.**
+
+---
+
+## 🧱 Core Architecture
+
+- **Backend:** Node.js + Express (TypeScript)
+- **Database:** PostgreSQL (Prisma ORM)
+- **Caching & Jobs:** Redis + BullMQ
+- **Storage:** Local filesystem (extensible to object storage)
+- **Auth:** JWT (Access + Refresh token model)
+- **Infra:** Dockerized services (server, workers, database, redis)
+
+Designed with:
+
+- Clean modular folder structure
+- Background worker separation
+- Scalable API design
+- Strong type safety
+- Production-grade logging
+
+---
+
+## ✅ Current Progress
+
+### 🔐 Authentication
+
+- JWT-based access & refresh token flow
+- Secure cookie/token handling
+- Stateless session management
+- Role-aware authorization groundwork
+
+### 📦 Storage Module
+
+- Secure per-user isolated storage
+- File upload with metadata capture (size, type, timestamp)
+- MIME type detection
+- Organized folder hierarchy (virtual folder structure)
+- Storage quota enforcement (extensible)
+
+### 💬 Real-time Chat
+
+- 1:1 private messaging
+- Broadcast messaging
+- WebSocket-based architecture
+- Redis-backed pub/sub scaling
+
+### 🛡 Security Principles
+
+- Strict user data isolation
+- Input validation
+- Modular permission boundaries
+- Designed for LAN threat model
+
+---
+
+## 🔜 Next Milestones
+
+### 🔗 File Sharing System
+
+- Shareable links
+- Expiration-based access
+- Permission levels (read/write)
+- Secure tokenized access control
+
+### ⚙ Add-on Framework
+
+- Modular plugin system
+- Feature isolation
+- AI assistant integration
+- Automation pipelines
+
+---
+
+## 🎯 Design Philosophy
+
+Homelab follows:
+
+- **Offline-first architecture**
+- **Separation of concerns (API / Workers / Shared)**
+- **Background job orchestration**
+- **Composable feature modules**
+- **Infrastructure-as-code mindset**
+
+The goal is not just functionality —
+it’s building a **clean, extensible, production-grade system from the ground up.**

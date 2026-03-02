@@ -12,10 +12,7 @@ type Props = {
 
 export default async function ProjectPage({ params }: Props) {
   try {
-    const project = await import(
-      /* webpackInclude: \.mdx$/ */
-      `@/content/projects/${params.slug}.mdx`
-    );
+    const project = await import(`@/content/projects/${params.slug}.mdx`);
     const Content = project.default;
     const meta: any = project.meta ?? {};
 

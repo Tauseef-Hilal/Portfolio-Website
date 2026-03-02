@@ -44,14 +44,17 @@ export default async function ProjectSection() {
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group relative h-[420px] w-[320px] overflow-hidden bg-gradient-to-br from-gray-900/50 to-black border border-gray-800/40 hover:border-indigo-700/40 transition-all duration-500 rounded-lg hover:shadow-2xl hover:shadow-black/50">
+    <div className="group relative h-[420px] w-[320px] overflow-hidden bg-gradient-to-br from-gray-900/50 to-black border border-gray-800/40 hover:border-indigo-700/60 transition-all duration-500 rounded-lg hover:shadow-2xl hover:shadow-indigo-900/30 hover:bg-gradient-to-br hover:from-gray-900/70 hover:to-black">
       {/* Image */}
       <div className="relative h-[55%] w-full overflow-hidden bg-gray-900">
         <Image
           src={project.imagePath}
           alt={project.title}
           fill
+          quality={85}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
+          priority={project.featured}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </div>
@@ -59,11 +62,11 @@ export function ProjectCard({ project }: { project: Project }) {
       {/* Content */}
       <div className="flex flex-col justify-between h-[45%] p-5 bg-gradient-to-b from-gray-900/50 to-black backdrop-blur-sm border-t border-gray-800/40">
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold tracking-wide text-white group-hover:text-indigo-200 transition-colors">
+          <h3 className="text-lg font-semibold tracking-wide text-white group-hover:text-indigo-100 transition-colors duration-300">
             {project.title}
           </h3>
 
-          <p className="text-gray-400 text-sm leading-snug group-hover:text-gray-300 transition-colors">
+          <p className="text-gray-400 text-sm leading-snug group-hover:text-gray-200 transition-colors duration-300">
             {project.shortDescription}
           </p>
 
@@ -72,7 +75,7 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.tech.slice(0, 3).map((tech) => (
               <span
                 key={tech}
-                className="text-[10px] px-2.5 py-1 border border-gray-700/60 text-gray-500 rounded-sm group-hover:border-indigo-700/60 group-hover:text-indigo-300 transition-all"
+                className="text-[10px] px-2.5 py-1 border border-gray-700/50 text-gray-500 rounded-sm group-hover:border-indigo-600/70 group-hover:text-indigo-400 group-hover:bg-indigo-950/20 transition-all duration-300"
               >
                 {tech}
               </span>
@@ -121,8 +124,8 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {/* Featured badge */}
       {project.featured && (
-        <div className="absolute top-4 left-4 text-[10px] px-3 py-2 bg-white/90 text-black font-bold tracking-widest uppercase transition-all duration-500 group-hover:bg-white shadow-lg">
-          Featured
+        <div className="absolute top-4 left-4 text-[10px] px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-bold tracking-widest uppercase transition-all duration-500 group-hover:from-indigo-500 group-hover:to-indigo-400 shadow-lg shadow-indigo-900/50 group-hover:shadow-indigo-600/70 rounded-md border border-indigo-400/30 group-hover:border-indigo-300/50">
+          ★ Featured
         </div>
       )}
     </div>
