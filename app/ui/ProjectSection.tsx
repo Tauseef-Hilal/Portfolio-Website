@@ -23,6 +23,7 @@ export default async function ProjectSection() {
             <h3 className="text-3xl md:text-5xl font-light text-white">
               Featured Projects
             </h3>
+            <div className="w-16 h-[2px] bg-gradient-to-r from-gray-400 to-transparent mb-6" />
           </div>
           <p className="text-gray-400 text-sm md:text-base max-w-3xl leading-relaxed">
             A curated selection of projects showcasing full-stack development,

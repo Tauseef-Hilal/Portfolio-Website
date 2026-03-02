@@ -41,8 +41,8 @@ export default function ContactSection() {
             <h3 className="text-3xl md:text-5xl font-light text-white mb-6">
               Let's Build Something Great
             </h3>
+            <div className="w-16 h-[2px] bg-gradient-to-r from-gray-400 to-transparent mb-6" />
           </div>
-          <div className="w-16 h-[2px] bg-gradient-to-r from-gray-400 to-transparent mb-6" />
           <p className="text-gray-400 text-sm md:text-base leading-relaxed">
             Open to remote backend and full-stack opportunities. If you're
             building scalable systems or exploring innovative solutions, I'd

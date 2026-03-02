@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function StorySection() {
   return (
     <section
-      className="relative flex flex-col lg:flex-row min-h-screen items-center justify-between px-6 md:px-12 lg:px-20 gap-12 py-20 lg:py-0 overflow-hidden bg-black max-w-7xl mx-auto"
+      className="relative flex flex-col lg:flex-row min-h-screen items-center justify-center px-6 md:px-12 lg:px-20 gap-12 py-20 lg:py-0 overflow-hidden bg-black max-w-7xl mx-auto"
       id="story"
     >
       {/* Decorative gradient background */}
@@ -29,6 +29,9 @@ export default function StorySection() {
           <h2 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
             About Me
           </h2>
+          <h3 className="text-3xl md:text-5xl font-light text-white">
+            The Story
+          </h3>
           <div className="w-16 h-[2px] bg-gradient-to-r from-gray-400 to-transparent mx-auto lg:mx-0"></div>
         </div>
 

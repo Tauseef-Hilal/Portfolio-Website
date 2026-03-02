@@ -27,6 +27,7 @@ export default function ProfessionalExperienceSection() {
             <h3 className="text-3xl md:text-5xl lg:text-6xl font-extralight text-white">
               Professional Journey
             </h3>
+            <div className="w-16 h-[2px] bg-gradient-to-r from-gray-400 to-transparent mb-6" />
           </div>
 
           <p className="text-gray-400 text-sm md:text-base max-w-3xl leading-relaxed">
