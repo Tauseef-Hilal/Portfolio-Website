@@ -22,7 +22,7 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 w-full md:flex items-center justify-around px-6 md:px-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto md:flex items-center justify-around px-6 md:px-12 lg:px-20">
         {/* Desktop Image */}
         <div className="hidden md:flex md:w-1/2 items-center justify-center">
           <Image
@@ -79,7 +79,7 @@ export default function HeroSection() {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex p-3 border border-gray-700/80 hover:border-gray-400 text-gray-400 hover:text-white transition-all duration-300 hover:bg-white/5"
+                  className="inline-flex p-3 border border-gray-800/40 hover:border-indigo-700/40 text-gray-400 hover:text-white transition-all duration-300 hover:bg-white/5 rounded-sm"
                 >
                   <Icon size={22} />
                 </Link>

@@ -1,16 +1,50 @@
+export const meta = {
+  title: "Homelab",
+  shortDescription:
+    "Self-hosted LAN storage, file sharing, and real-time messaging system.",
+  tech: ["Node.js", "PostgreSQL", "Redis", "Docker", "TypeScript"],
+  githubUrl: "https://github.com/Tauseef-Hilal/homelab",
+  liveUrl: "",
+  imagePath: "/images/homelab.png",
+  featured: true,
+  year: 2025,
+  role: "Full-Stack Developer",
+  status: "Active",
+  highlights: [
+    "Built modular monorepo architecture with server and worker separation",
+    "Implemented JWT authentication and role-based access",
+    "Designed LAN-first real-time messaging system",
+  ],
+};
+
+# Project Homelab
+
+A LAN-first, secure, extensible personal cloud and automation hub.
+
 ---
-title: "Homelab"
-shortDescription: "Self-hosted LAN storage, file sharing, and real-time messaging system."
-tech: ["Node.js", "PostgreSQL", "Redis", "Docker", "TypeScript"]
-githubUrl: "https://github.com/Tauseef-Hilal/homelab"
-liveUrl: ""
-imagePath: "/images/homelab.png"
-featured: true
-year: 2025
-role: "Full-Stack Developer"
-status: "Active"
-highlights:
-  - "Built modular monorepo architecture with server and worker separation"
-  - "Implemented JWT authentication and role-based access"
-  - "Designed LAN-first real-time messaging system"
+
+## Overview
+
+Homelab is a self-hosted system that provides private user storage, local file sharing, and messaging within a LAN. It’s designed to work entirely offline, with modular components for future extensions like automation, dashboards, and AI helpers.
+
 ---
+
+## Current Progress
+
+### Authentication
+
+- Implemented using JWT access and refresh tokens.
+
+### Storage
+
+- Local file storage and management implemented.
+- Users can upload, organize, and manage their own files.
+- Data is private — users cannot access each other’s files.
+
+---
+
+## Next Steps
+
+- Local chat (1:1 and broadcast).
+- File sharing and permission system.
+- Add-on framework for modular features.

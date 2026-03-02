@@ -31,7 +31,7 @@ export default function ContactSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/15 to-gray-950 pointer-events-none" />
       <div className="absolute left-1/4 bottom-0 w-96 h-96 bg-indigo-900/5 rounded-full filter blur-3xl pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <div className="mb-20 max-w-2xl">
           <div className="mb-4 space-y-3">
@@ -51,7 +51,7 @@ export default function ContactSection() {
         </div>
 
         {/* Form Card */}
-        <div className="relative border border-gray-800/60 bg-gradient-to-br from-gray-900/30 to-black/70 backdrop-blur-lg p-8 md:p-10 flex flex-col lg:flex-row gap-10 lg:gap-16 lg:min-h-96">
+        <div className="relative border border-gray-800/40 bg-gradient-to-br from-gray-900/30 to-black/70 backdrop-blur-lg p-8 md:p-10 flex flex-col lg:flex-row gap-10 lg:gap-16 lg:min-h-96 rounded-lg">
           {/* Form */}
           <form
             onSubmit={handleSubmit}
@@ -62,7 +62,7 @@ export default function ContactSection() {
               placeholder="Tell me about your project or opportunity..."
               name="message"
               rows={5}
-              className="bg-gray-950/40 border border-gray-800/60 p-4 text-sm font-light focus:outline-none focus:border-gray-500 focus:bg-gray-900/50 resize-none transition-all placeholder:text-gray-600 hover:border-gray-700/80 rounded-sm"
+              className="bg-gray-950/40 border border-gray-800/40 p-4 text-sm font-light focus:outline-none focus:border-indigo-700/40 focus:bg-gray-900/50 resize-none transition-all placeholder:text-gray-600 hover:border-indigo-700/40 rounded-sm"
             />
 
             <input
@@ -70,7 +70,7 @@ export default function ContactSection() {
               type="email"
               placeholder="your@email.com"
               name="email"
-              className="bg-gray-950/40 border border-gray-800/60 p-4 text-sm font-light w-full focus:outline-none focus:border-gray-500 focus:bg-gray-900/50 transition-all placeholder:text-gray-600 hover:border-gray-700/80 rounded-sm"
+              className="bg-gray-950/40 border border-gray-800/40 p-4 text-sm font-light w-full focus:outline-none focus:border-indigo-700/40 focus:bg-gray-900/50 transition-all placeholder:text-gray-600 hover:border-indigo-700/40 rounded-sm"
             />
 
             {/* Button + Status */}
