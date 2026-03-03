@@ -25,7 +25,7 @@ export const workExperience: WorkExperience[] = [
     location: 'Sopore, JK, India',
     startDate: '2025-02',
     endDate: '2025-05',
-    techStack: ['Node.js', 'Express', 'Docker', 'REST APIs'],
+    techStack: ['Python', 'Django', 'Docker', 'REST APIs'],
     highlights: [
       'Developed REST APIs for Patients, Appointments, and Analytics modules serving 5,000+ users.',
       'Implemented secure handling for sensitive healthcare data with structured exception management.',
@@ -59,7 +59,7 @@ export const workExperience: WorkExperience[] = [
     location: 'Remote',
     startDate: '2023-08',
     endDate: '2023-09',
-    techStack: ['Python', 'Playwright', 'Testing'],
+    techStack: ['Node.js', 'Playwright', 'Testing'],
     highlights: [
       'Authored 10+ Playwright test cases for freeCodeCamp, improving test coverage and reliability.',
       'Implemented algorithmic solutions in TheAlgorithms/Python repository, impacting 5,000+ global users.',
