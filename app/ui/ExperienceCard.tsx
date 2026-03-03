@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, memo } from "react";
+import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { WorkExperience } from "../lib/workExperience";
 
@@ -8,7 +8,9 @@ interface ExperienceCardProps {
   experience: WorkExperience;
 }
 
-const ExperienceCard = memo(({ experience: exp }: ExperienceCardProps) => {
+export default function ExperienceCard({
+  experience: exp,
+}: ExperienceCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggle() {
@@ -91,7 +93,7 @@ const ExperienceCard = memo(({ experience: exp }: ExperienceCardProps) => {
       </div>
     </div>
   );
-});
+}
 
 function formatDate(date: string) {
   const [year, month] = date.split("-");
@@ -102,5 +104,3 @@ function formatDate(date: string) {
     year: "numeric",
   });
 }
-
-export default ExperienceCard;
