@@ -10,7 +10,7 @@ export type Project = {
   year: number;
   role?: string;
   highlights?: string[];
-  status?: "Active" | "Archived" | "In Progress";
+  status?: 'Active' | 'Archived' | 'In Progress';
 };
 
-export type ProjectFrontmatter = Omit<Project, "slug">;
+export type ProjectFrontmatter = Omit<Project, 'slug'>;
