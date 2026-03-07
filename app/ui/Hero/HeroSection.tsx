@@ -4,19 +4,48 @@ import { iceland, delius } from "../fonts";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import Link from "next/link";
 
+const SOCIAL_LINKS = [
+  {
+    name: "GitHub",
+    href: "https://github.com/Tauseef-Hilal",
+    icon: FaGithub,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/tauseef-tantary/",
+    icon: FaLinkedin,
+  },
+  {
+    name: "Twitter",
+    href: "https://x.com/tauseef_tantary",
+    icon: FaTwitter,
+  },
+];
+
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-black">
+    <section
+      aria-labelledby="hero-heading"
+      className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-black"
+    >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-black pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none animate-glow" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-black pointer-events-none"
+      />
+
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none animate-glow"
+      />
 
       {/* Mobile Background Image */}
-      <div className="absolute inset-0 md:hidden opacity-20">
+      <div aria-hidden="true" className="absolute inset-0 md:hidden opacity-20">
         <Image
           src="/images/tauseef1.png"
-          alt="Tauseef"
+          alt=""
           fill
+          sizes="100vw"
           className="object-cover object-top"
           priority
         />
@@ -27,19 +56,21 @@ export default function HeroSection() {
         <div className="hidden md:flex md:w-1/2 items-center justify-center">
           <Image
             src="/images/tauseef1.png"
-            alt="Tauseef"
+            alt="Portrait of Tauseef Tantary"
             width={600}
             height={600}
             priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="w-full max-w-md object-cover blended-image"
           />
         </div>
 
         {/* Content */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left py-28">
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left py-20 md:py-28">
           {/* Name */}
-          <div className="mb-14">
+          <header className="mb-14">
             <h1
+              id="hero-heading"
               className={`${iceland.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-[1.15]`}
             >
               <span className="block lg:inline bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">
@@ -50,8 +81,11 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <div className="mt-6 w-20 h-[2px] bg-gradient-to-r from-gray-300 to-transparent mx-auto md:mx-0" />
-          </div>
+            <div
+              aria-hidden="true"
+              className="mt-6 w-20 h-[2px] bg-gradient-to-r from-gray-300 to-transparent mx-auto md:mx-0"
+            />
+          </header>
 
           {/* Role & Tagline */}
           <div className={`space-y-6 max-w-xl ${delius.className}`}>
@@ -66,26 +100,23 @@ export default function HeroSection() {
           </div>
 
           {/* Social Links */}
-          <ul className="mt-12 flex items-center gap-4 flex-wrap justify-center md:justify-start">
-            {[FaGithub, FaLinkedin, FaTwitter].map((Icon, i) => (
-              <li key={i}>
-                <Link
-                  href={
-                    i === 0
-                      ? "https://github.com/Tauseef-Hilal"
-                      : i === 1
-                        ? "https://www.linkedin.com/in/tauseef-tantary/"
-                        : "https://x.com/tauseef_tantary"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex p-3 border border-gray-800/40 hover:border-indigo-700/40 text-gray-400 hover:text-white transition-all duration-300 hover:bg-white/5 rounded-sm"
-                >
-                  <Icon size={22} />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <nav aria-label="Social media links" className="mt-12">
+            <ul className="flex items-center gap-4 flex-wrap justify-center md:justify-start">
+              {SOCIAL_LINKS.map(({ name, href, icon: Icon }) => (
+                <li key={name}>
+                  <Link
+                    href={href}
+                    aria-label={`Visit ${name} profile`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex p-3 border border-gray-800/40 hover:border-indigo-700/40 text-gray-400 hover:text-white transition-all duration-300 hover:bg-white/5 rounded-sm"
+                  >
+                    <Icon size={22} aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
 
