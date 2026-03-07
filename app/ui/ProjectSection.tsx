@@ -87,7 +87,7 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.title}
           </h3>
 
-          <p className="text-gray-400 text-sm leading-snug group-hover:text-gray-200 transition-colors duration-300">
+          <p className="text-gray-400 text-sm leading-snug line-clamp-2 group-hover:text-gray-200 transition-colors duration-300">
             {project.shortDescription}
           </p>
 

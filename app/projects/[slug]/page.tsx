@@ -1,8 +1,5 @@
 import fs from "fs";
 import path from "path";
-import Image from "next/image";
-import { BsGithub } from "react-icons/bs";
-import { FiExternalLink } from "react-icons/fi";
 import { notFound } from "next/navigation";
 import ProjectHeader from "../../ui/ProjectHeader";
 
