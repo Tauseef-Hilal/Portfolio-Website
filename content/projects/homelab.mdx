@@ -6,7 +6,9 @@ export const meta = {
     "Next.js",
     "Express.js",
     "PostgreSQL",
+    "Prisma",
     "Redis",
+    "BullMQ",
     "Docker",
     "TypeScript",
   ],
@@ -18,9 +20,14 @@ export const meta = {
   role: "Full-Stack Engineer",
   status: "Active",
   highlights: [
-    "Built modular monorepo architecture with server and worker separation",
-    "Implemented JWT authentication and role-based access",
-    "Designed LAN-first real-time messaging system",
+    "Optimized storage I/O path using BullMQ workers, slashing API latency from ~1200ms to ~40ms (~30×).",
+    "Engineered batched async bulk operations handling 1k+ files with concurrent execution and job tracking.",
+    "Implemented Redis + Lua rate limiting, sustaining 900+ req/sec traffic with a stable p95 latency of ~300ms.",
+    "Built resumable chunked uploads with chunk-level deduplication, reducing duplicate storage by 50%.",
+    "Developed real-time global chat using WebSockets and Redis Pub/Sub for scalable, low-latency messaging.",
+    "Secured the platform via JWT authentication with refresh token rotation and multi-device sessions.",
+    "Architected granular file-sharing controls utilizing bitmask permissions and hierarchical access resolution.",
+    "Instrumented comprehensive system observability through structured logging and health-check endpoints.",
   ],
 };
 
@@ -42,6 +49,17 @@ It was designed as a **systems engineering project** exploring patterns commonly
 - worker isolation
 - event-based messaging
 - modular service architecture
+
+### Resume Highlights
+
+- Optimized storage I/O path using BullMQ workers, slashing API latency from ~1200ms to ~40ms (~30×).
+- Engineered batched async bulk operations handling 1k+ files with concurrent execution and job tracking.
+- Implemented Redis + Lua rate limiting, sustaining 900+ req/sec traffic with a stable p95 latency of ~300ms.
+- Built resumable chunked uploads with chunk-level deduplication, reducing duplicate storage by 50%.
+- Developed real-time global chat using WebSockets and Redis Pub/Sub for scalable, low-latency messaging.
+- Secured the platform via JWT authentication with refresh token rotation and multi-device sessions.
+- Architected granular file-sharing controls utilizing bitmask permissions and hierarchical access resolution.
+- Instrumented comprehensive system observability through structured logging and health-check endpoints.
 
 ### Core Architectural Goals
 
