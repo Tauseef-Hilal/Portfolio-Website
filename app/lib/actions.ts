@@ -1,5 +1,5 @@
 "use server";
-import sgMail from "@sendgrid/mail";
+import { sendEmail } from "./mailer";
 
 export type FormResponse = {
   success: boolean;
@@ -10,21 +10,16 @@ export async function sendMail(formData: FormData): Promise<FormResponse> {
   const message = formData.get("message");
   const email = formData.get("email");
 
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-  const msg = {
-    from: process.env.SENDER_EMAIL,
-    to: process.env.RECEIVER_EMAIL,
-    subject: "Portfolio Mail",
-    text: `From: ${email}\n\n${message}`,
-  };
-
   try {
-    //@ts-ignore
-    await sgMail.send(msg);
-    console.log("Email sent");
+    await sendEmail({
+      to: process.env.RECEIVER_EMAIL,
+      subject: "Portfolio Mail",
+      text: `From: ${email}\n\n${message}`,
+    });
+    
     return { success: true, message: "Email Sent!" };
   } catch (error) {
-    console.error(error);
+    console.error("Failed to send email after retries:", error);
     return { success: false, message: "Couldn't Send Email!" };
   }
 }
