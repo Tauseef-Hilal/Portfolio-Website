@@ -8,14 +8,15 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://tauseef.in"),
 
   title: {
-    default: "Tauseef Tantary | Backend-Centric Full-Stack Engineer",
+    default: "Tauseef Tantary | Full-Stack Engineer",
     template: "%s | Tauseef Tantary",
   },
 
   description:
-    "Backend-centric full-stack engineer building scalable systems with clean architecture, real-time infrastructure, and production-grade backend design.",
+    "Full-stack engineer building scalable systems with clean architecture, real-time infrastructure, and production-grade backend design.",
 
   authors: [{ name: "Tauseef Hilal Tantary" }],
+  applicationName: "Tauseef Tantary",
 
   keywords: [
     "Tauseef",
@@ -71,7 +72,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${lato.className} ${lato.variable} font-sans antialiased`}>
+      <body
+        className={`${lato.className} ${lato.variable} font-sans antialiased`}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Tauseef Tantary",
+              url: "https://tauseef.in",
+              jobTitle: "Backend-Centric Full-Stack Engineer",
+            }),
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -89,4 +104,3 @@ export default function RootLayout({
     </html>
   );
 }
-
