@@ -3,26 +3,22 @@ import path from "path";
 import { notFound } from "next/navigation";
 import ProjectHeader from "../../ui/ProjectHeader";
 
+
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export default async function ProjectPage({ params }: Props) {
   try {
-    const project = await import(`@/content/projects/${params.slug}.mdx`);
+    const slug = (await params).slug;
+    const project = await import(`@/content/projects/${slug}.mdx`);
     const Content = project.default;
     const meta: any = project.meta ?? {};
 
     return (
-      <main className="w-full bg-black relative">
+      <main className="w-full bg-background relative min-h-screen">
         {/* Animated background elements */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-indigo-900/5 rounded-full filter blur-3xl animate-glow"></div>
-          <div
-            className="absolute bottom-40 right-1/4 w-96 h-96 bg-indigo-900/5 rounded-full filter blur-3xl animate-glow"
-            style={{ animationDelay: "1s" }}
-          ></div>
-        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
         {/* Meta Content */}
         <div className="relative z-10 pt-32 pb-20 px-6 md:px-12">
@@ -31,7 +27,7 @@ export default async function ProjectPage({ params }: Props) {
             <ProjectHeader meta={meta} />
 
             {/* Content */}
-            <article className="prose prose-invert max-w-none prose-sm md:prose-base lg:prose-base prose-headings:text-white prose-p:text-gray-300 prose-strong:text-white prose-li:text-gray-300 prose-a:text-indigo-400 prose-code:text-indigo-300 prose-pre:bg-gray-900 prose-pre:p-4 prose-pre:rounded-md">
+            <article className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-a:text-primary hover:prose-a:text-primary/80 prose-code:text-primary prose-pre:bg-card prose-pre:border prose-pre:border-border prose-pre:p-4 prose-pre:rounded-md mt-12 prose-headings:font-heading">
               <Content />
             </article>
           </div>

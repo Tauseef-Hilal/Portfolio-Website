@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "./ui/Navbar/Navbar";
 import Footer from "./ui/Footer";
-import { delius } from "./ui/fonts";
+import { lato } from "./ui/fonts";
 import "./ui/globals.css";
 
 export const metadata: Metadata = {
@@ -61,20 +61,32 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "./components/theme-provider";
+import ScrollRevealWrapper from "./ui/ScrollRevealWrapper";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={delius.className}>
-        <header>
-          <Navbar />
-        </header>
-        {children}
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${lato.className} ${lato.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ScrollRevealWrapper />
+          <header>
+            <Navbar />
+          </header>
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

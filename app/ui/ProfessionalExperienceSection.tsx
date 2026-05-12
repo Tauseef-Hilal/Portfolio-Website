@@ -1,39 +1,92 @@
 "use client";
 
 import { workExperience } from "../lib/workExperience";
-import ExperienceCard from "./ExperienceCard";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { getSkillStyle } from "./utils";
 
 export default function ProfessionalExperienceSection() {
   return (
-    <section className="min-h-screen py-24 2xl:px-32 relative bg-black">
-      {/* Background accents */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/20 to-black pointer-events-none" />
-      <div className="absolute left-0 top-1/3 w-96 h-96 bg-indigo-900/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative py-24 bg-background overflow-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="relative z-10 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+      <div className="relative z-10 px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-16 bg-gradient-to-b from-white/3 to-transparent py-6 md:py-8 rounded-2xl">
-          <div className="mb-4 space-y-3">
-            <h2 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
+        <div className="mb-16 reveal">
+          <div className="flex items-center gap-3 mb-4 text-muted-foreground">
+            <Briefcase size={20} className="text-primary" />
+            <h2 className="text-sm font-semibold tracking-widest uppercase">
               Experience
             </h2>
-            <h3 className="text-3xl md:text-5xl lg:text-6xl font-extralight text-white">
-              Professional Journey
-            </h3>
-            <div className="w-16 h-[2px] bg-gradient-to-r from-gray-400 to-transparent mb-6" />
           </div>
-
-          <p className="text-gray-400 text-sm md:text-base max-w-3xl leading-relaxed">
-            A timeline of roles, collaborations, and system-building work across
-            backend engineering, full-stack development, and production
-            deployments.
-          </p>
+          <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+            Professional Experience{" "}
+          </h3>
+          <div className="w-20 h-[4px] bg-gradient-to-r from-foreground to-transparent mb-8" />
         </div>
 
-        {/* Timeline */}
-        <div className="relative border-l border-gray-800/60 ml-3 space-y-8">
-          {workExperience.map((exp) => (
-            <ExperienceCard key={exp.id} experience={exp} />
+        {/* Experience Grid / List */}
+        <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+          {workExperience.map((exp, index) => (
+            <div
+              key={exp.id}
+              className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal"
+              style={{ ["--delay" as any]: `${index * 0.1}s` }}
+            >
+              {/* Timeline Marker */}
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-background bg-border text-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow z-10">
+                <div className="w-2 h-2 rounded-full bg-primary" />
+              </div>
+
+              {/* Card */}
+              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] min-h-[380px] flex flex-col p-6 rounded-xl border border-border bg-card/60 backdrop-blur-md shadow-sm hover:shadow-md hover:bg-card transition-all duration-300">
+                <div className="flex flex-col gap-1 mb-4">
+                  <h4 className="text-xl font-bold text-foreground">
+                    {exp.role}
+                  </h4>
+                  <div className="text-primary font-medium">{exp.company}</div>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <Calendar size={14} />
+                      {exp.startDate} — {exp.endDate || "Present"}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin size={14} />
+                      {exp.location}
+                    </span>
+                    <span className="px-2 py-1 rounded-full bg-muted/50 border border-border">
+                      {exp.employmentType}
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="space-y-2 mb-6 flex-grow">
+                  {exp.highlights.map((highlight, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-muted-foreground"
+                    >
+                      <span className="text-primary mt-1">▹</span>
+                      <span className="leading-relaxed">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {exp.techStack && (
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50 mt-auto">
+                    {exp.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs px-3 py-1 rounded-full font-medium"
+                        style={getSkillStyle(tech)}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       </div>

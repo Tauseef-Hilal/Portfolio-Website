@@ -1,3 +1,5 @@
+
+
 export default function BiographyPage() {
   const sections = [
     {
@@ -38,15 +40,10 @@ export default function BiographyPage() {
   ];
 
   return (
-    <main className="w-full bg-black relative">
+    <main className="w-full bg-background relative overflow-hidden min-h-screen">
       {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-indigo-900/5 rounded-full filter blur-3xl animate-glow"></div>
-        <div
-          className="absolute bottom-40 right-1/4 w-96 h-96 bg-indigo-900/5 rounded-full filter blur-3xl animate-glow"
-          style={{ animationDelay: "1s" }}
-        ></div>
-      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 pt-32 pb-20 px-6 md:px-12 lg:px-20">
@@ -54,12 +51,12 @@ export default function BiographyPage() {
           {/* Header */}
           <div className="mb-20 space-y-6">
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight">
-                A Journey <span className="block">Beyond Code</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-tight">
+                A Journey <span className="block text-primary">Beyond Code</span>
               </h1>
-              <div className="w-20 h-[2px] bg-gradient-to-r from-gray-400 to-transparent"></div>
+              <div className="w-20 h-[3px] bg-gradient-to-r from-primary to-transparent rounded-full"></div>
             </div>
-            <p className="text-lg md:text-xl text-gray-400 font-light max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
               From a curious kid watching a digital clock appear on screen to a
               backend-focused engineer building scalable systems. This is the
               story of how constraints became catalysts.
@@ -71,15 +68,15 @@ export default function BiographyPage() {
             {sections.map((section, index) => (
               <article
                 key={index}
-                className="group border-l-2 border-gray-800 hover:border-gray-600 transition-colors duration-300 pl-8 py-4"
+                className="group border-l-2 border-border hover:border-primary transition-colors duration-300 pl-8 py-4"
               >
-                <h2 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase mb-4">
+                <h2 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
                   {`${String(index + 1).padStart(2, "0")} / ${sections.length}`}
                 </h2>
-                <h3 className="text-2xl md:text-3xl font-light text-white mb-6 group-hover:text-gray-100 transition-colors">
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
                   {section.title}
                 </h3>
-                <p className="text-gray-300 text-base md:text-lg font-light leading-8">
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                   {section.content}
                 </p>
               </article>
@@ -87,17 +84,17 @@ export default function BiographyPage() {
           </div>
 
           {/* Closing note */}
-          <div className="mt-24 pt-16 border-t border-gray-800/50">
+          <div className="mt-24 pt-16 border-t border-border">
             <div className="space-y-6">
-              <h2 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
+              <h2 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
                 Today
               </h2>
-              <p className="text-lg md:text-xl font-light text-gray-200 leading-relaxed max-w-3xl">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
                 I'm always interested in discussing backend architecture, system
                 design, and the philosophy behind how we build software. If
                 you're working on something interesting or just want to chat
                 about technology, problem-solving, or growth,{" "}
-                <span className="text-white font-medium">let's talk</span>.
+                <span className="text-foreground font-semibold">let's talk</span>.
               </p>
             </div>
           </div>

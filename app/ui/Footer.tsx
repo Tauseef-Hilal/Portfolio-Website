@@ -2,128 +2,73 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-20 flex flex-col gap-12 relative bg-black border-t border-gray-800/30">
-      {/* Divider */}
-      <hr className="border-gray-800/50" />
+    <footer className="bg-background border-t border-border pt-16 pb-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        
+        {/* Brand */}
+        <div className="col-span-1 md:col-span-2">
+          <Link href="/" className="text-2xl font-bold tracking-tight text-foreground mb-4 inline-block">
+            Tauseef
+          </Link>
+          <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
+            High-leverage backend specialist engineering scalable, reliable web platforms.
+            Based in Kashmir, serving startups globally.
+          </p>
+        </div>
 
-      <div className="flex flex-col md:flex-row md:justify-between w-full px-6 lg:px-20 xl:px-48 2xl:px-64 gap-12 md:gap-8">
-        {/* Social Media */}
-        <div className="flex flex-col gap-6">
-          <h3 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
-            Social
+        {/* Links */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+            Network
           </h3>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             <li>
-              <Link
-                href="https://linkedin.com/in/tauseef-hilal/"
-                target="_blank"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
+              <Link href="https://linkedin.com/in/tauseef-tantary/" target="_blank" className="text-sm text-foreground hover:text-primary transition-colors">
                 LinkedIn
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
               </Link>
             </li>
             <li>
-              <Link
-                href="https://twitter.com/tauseef_tantary"
-                target="_blank"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
-                Twitter / X
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://github.com/Tauseef-Hilal"
-                target="_blank"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
+              <Link href="https://github.com/Tauseef-Hilal" target="_blank" className="text-sm text-foreground hover:text-primary transition-colors">
                 GitHub
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
+              </Link>
+            </li>
+            <li>
+              <Link href="https://x.com/tauseef_tantary" target="_blank" className="text-sm text-foreground hover:text-primary transition-colors">
+                X (Twitter)
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* Community */}
-        <div className="flex flex-col gap-6">
-          <h3 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
-            Community
+        {/* Resources */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+            Resources
           </h3>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             <li>
-              <Link
-                href="https://discord.gg/B4yMMDF3WP"
-                target="_blank"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
-                Discord
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://youtube.com/channel/UC93eIZSH01Z2k9fQQxrIQTw"
-                target="_blank"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
-                YouTube
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* More */}
-        <div className="flex flex-col gap-6">
-          <h3 className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
-            More
-          </h3>
-          <ul className="space-y-4">
-            <li>
-              <Link
-                href="/biography"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
+              <Link href="/biography" className="text-sm text-foreground hover:text-primary transition-colors">
                 Biography
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
               </Link>
             </li>
             <li>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-white font-light text-sm transition-colors duration-300 flex items-center gap-2 group"
-              >
-                Resume
-                <span className="inline-block opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-300">
-                  →
-                </span>
-              </Link>
+              <a href="/resume/Tauseef-Tantary-Resume.pdf" download className="text-sm text-foreground hover:text-primary transition-colors">
+                Resume (PDF)
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-gray-800/30 pt-10 text-center px-6">
-        <p className="text-xs text-gray-600 font-light">
-          &copy; {new Date().getFullYear()}{" "}
-          <span className="text-gray-400">Tauseef Tantary</span>. Crafted with
-          care.
+      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p className="text-xs text-muted-foreground">
+          &copy; {new Date().getFullYear()} Tauseef Tantary. All rights reserved.
         </p>
+        <div className="flex items-center gap-2">
+           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+           <span className="text-xs text-muted-foreground">All systems operational</span>
+        </div>
       </div>
     </footer>
   );

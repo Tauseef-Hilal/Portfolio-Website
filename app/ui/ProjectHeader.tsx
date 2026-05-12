@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { BsGithub } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
+import { getSkillStyle } from "./utils";
+
 
 export default function ProjectHeader({ meta }: { meta: any }) {
   return (
@@ -26,23 +28,23 @@ export default function ProjectHeader({ meta }: { meta: any }) {
           {/* Content */}
           <div className="md:col-span-3">
             <div className="flex flex-col justify-between gap-3">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extralight text-white leading-tight break-words">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight break-words">
                 {meta.title ?? "Project"}
               </h1>
 
               <div className="flex items-center gap-3 flex-wrap">
                 {meta.year && (
-                  <span className="text-xs text-gray-200 bg-gray-800/40 px-2 py-1 rounded-md">
+                  <span className="text-xs text-muted-foreground bg-muted px-2.5 py-1 rounded-md border border-border">
                     {meta.year}
                   </span>
                 )}
                 {meta.role && (
-                  <span className="text-xs text-gray-200 bg-indigo-900/30 px-2 py-1 rounded-md">
+                  <span className="text-xs text-primary bg-primary/10 px-2.5 py-1 rounded-md border border-primary/20">
                     {meta.role}
                   </span>
                 )}
                 {meta.status && (
-                  <span className="text-xs text-gray-900 bg-amber-300 px-2 py-1 rounded-md">
+                  <span className="text-xs text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">
                     {meta.status}
                   </span>
                 )}
@@ -50,17 +52,18 @@ export default function ProjectHeader({ meta }: { meta: any }) {
             </div>
 
             {meta.shortDescription && (
-              <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl">
+              <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
                 {meta.shortDescription}
               </p>
             )}
 
             {/* Tech */}
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-2">
               {(meta.tech ?? []).map((t: string) => (
                 <span
                   key={t}
-                  className="text-[10px] px-2.5 py-1 border border-gray-700/60 text-gray-500 rounded-sm"
+                  className="text-xs px-3 py-1 rounded-full font-medium"
+                  style={getSkillStyle(t)}
                 >
                   {t}
                 </span>
@@ -68,15 +71,15 @@ export default function ProjectHeader({ meta }: { meta: any }) {
             </div>
 
             {/* Links */}
-            <div className="mt-6 flex flex-wrap gap-3 items-center">
+            <div className="mt-8 flex flex-wrap gap-4 items-center">
               {meta.githubUrl && (
                 <a
                   href={meta.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-200 transition-all duration-300 group/link"
+                  className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-all duration-300 group/link font-semibold"
                 >
-                  <BsGithub className="text-base group-hover/link:-translate-y-[2px] transition-transform" />
+                  <BsGithub className="text-lg group-hover/link:-translate-y-[2px] transition-transform" />
                   <span>Code</span>
                 </a>
               )}
@@ -86,9 +89,9 @@ export default function ProjectHeader({ meta }: { meta: any }) {
                   href={meta.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-200 transition-all duration-300 group/link"
+                  className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-all duration-300 group/link font-semibold"
                 >
-                  <FiExternalLink className="text-base group-hover/link:-translate-y-[2px] transition-transform" />
+                  <FiExternalLink className="text-lg group-hover/link:-translate-y-[2px] transition-transform" />
                   <span>Live</span>
                 </a>
               )}
