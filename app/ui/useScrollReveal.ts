@@ -33,7 +33,7 @@ export function useScrollReveal() {
     observerRef.current = new IntersectionObserver(handleIntersect, observerOptions);
 
     const observeElements = () => {
-      const elements = document.querySelectorAll(".reveal:not(.active)");
+      const elements = document.querySelectorAll('[class*="reveal"]:not(.active)');
       elements.forEach((el) => {
         observerRef.current?.observe(el);
       });

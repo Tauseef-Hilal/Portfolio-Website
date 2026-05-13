@@ -14,14 +14,20 @@ export default function StorySection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* Image */}
-          <div className="w-full lg:w-5/12 flex justify-center reveal">
+          <div className="w-full lg:w-5/12 flex justify-center reveal-left">
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border border-border bg-card/40 backdrop-blur-xl shadow-2xl">
               <div className="relative w-full h-full rounded-full overflow-hidden border border-border bg-muted">
                 <Image
                   src="/images/profile.jpg"
                   alt="Tauseef Tantary"
                   fill
-                  className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-top hover:scale-105 transition-all duration-700 dark:opacity-0"
+                />
+                <Image
+                  src="/images/profile_dark.png"
+                  alt="Tauseef Tantary"
+                  fill
+                  className="object-cover object-top hover:scale-105 transition-all duration-700 opacity-0 dark:opacity-100"
                 />
               </div>
               <div className="absolute inset-0 rounded-full border border-primary/20 pointer-events-none" />
@@ -29,7 +35,7 @@ export default function StorySection() {
           </div>
 
           {/* Text Content */}
-          <div className="w-full lg:w-7/12 reveal" style={{ ["--delay" as any]: "0.2s" }}>
+          <div className="w-full lg:w-7/12 reveal-right" style={{ ["--delay" as any]: "0.2s" }}>
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4 text-muted-foreground">
                 <UserCircle size={20} className="text-primary" />

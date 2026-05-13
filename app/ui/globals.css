@@ -128,6 +128,12 @@ html {
   transform: none;
 }
 
+/* Reveal Left Variant */
+.reveal-left {
+  opacity: 1;
+  transform: none;
+}
+
 /* Only hide if JS is enabled and it hasn't been activated yet */
 .js-enabled .reveal:not(.active) {
   opacity: 0;
@@ -135,9 +141,23 @@ html {
   transition: none !important;
 }
 
-.js-enabled .reveal.active {
+.js-enabled .reveal-left:not(.active) {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: none !important;
+}
+
+.js-enabled .reveal-right:not(.active) {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: none !important;
+}
+
+.js-enabled .reveal.active,
+.js-enabled .reveal-left.active,
+.js-enabled .reveal-right.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(0, 0);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   transition-delay: var(--delay, 0s);
   will-change: opacity, transform;
