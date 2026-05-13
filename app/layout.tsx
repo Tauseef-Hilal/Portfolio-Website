@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Tauseef Tantary",
     images: [
       {
-        url: "/images/tauseef1.png",
+        url: "/images/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Tauseef Tantary",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "Tauseef Tantary | Backend Engineer",
     description:
       "Building scalable backend systems with clean architecture and real-time infrastructure.",
-    images: ["/images/tauseef1.png"],
+    images: ["/images/profile.jpg"],
   },
 };
 
@@ -69,7 +69,7 @@ const personSchema = {
   "@type": "Person",
   name: "Tauseef Tantary",
   url: "https://tauseef.in",
-  image: "https://tauseef.in/profile.jpg",
+  image: "https://tauseef.in/images/profile.jpg",
   sameAs: [
     "https://github.com/Tauseef-Hilal",
     "https://linkedin.com/in/tauseef-tantary",
