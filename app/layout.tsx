@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "./components/theme-provider";
+import ScrollRevealWrapper from "./ui/ScrollRevealWrapper";
 import Navbar from "./ui/Navbar/Navbar";
 import Footer from "./ui/Footer";
 import { lato } from "./ui/fonts";
@@ -62,8 +64,22 @@ export const metadata: Metadata = {
   },
 };
 
-import { ThemeProvider } from "./components/theme-provider";
-import ScrollRevealWrapper from "./ui/ScrollRevealWrapper";
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Tauseef Tantary",
+  url: "https://tauseef.in",
+  image: "https://tauseef.in/profile.jpg",
+  sameAs: [
+    "https://github.com/Tauseef-Hilal",
+    "https://linkedin.com/in/tauseef-tantary",
+    "https://x.com/tauseef_tantary",
+    "https://youtube.com/@thinkcsx",
+  ],
+  jobTitle: "Backend Systems Engineer",
+  description:
+    "Full-stack engineer building scalable systems with clean architecture, real-time infrastructure, and production-grade backend design.",
+};
 
 export default function RootLayout({
   children,

@@ -18,7 +18,7 @@ export default function StorySection() {
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border border-border bg-card/40 backdrop-blur-xl shadow-2xl">
               <div className="relative w-full h-full rounded-full overflow-hidden border border-border bg-muted">
                 <Image
-                  src="/images/tauseef1.png"
+                  src="/images/profile.jpg"
                   alt="Tauseef Tantary"
                   fill
                   className="object-cover object-top hover:scale-105 transition-transform duration-700"
