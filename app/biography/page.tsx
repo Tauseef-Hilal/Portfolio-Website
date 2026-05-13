@@ -90,11 +90,11 @@ export default function BiographyPage() {
                 Today
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                I'm always interested in discussing backend architecture, system
+                I&apos;m always interested in discussing backend architecture, system
                 design, and the philosophy behind how we build software. If
-                you're working on something interesting or just want to chat
+                you&apos;re working on something interesting or just want to chat
                 about technology, problem-solving, or growth,{" "}
-                <span className="text-foreground font-semibold">let's talk</span>.
+                <span className="text-foreground font-semibold">let&apos;s talk</span>.
               </p>
             </div>
           </div>

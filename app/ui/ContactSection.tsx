@@ -43,12 +43,12 @@ export default function ContactSection() {
             </h2>
           </div>
           <h3 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-6">
-            Let's Build Something Great
+            Let&apos;s Build Something Great
           </h3>
           <div className="w-20 h-[4px] bg-gradient-to-r from-foreground to-transparent mb-8" />
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Open to remote backend and full-stack opportunities. If you're
-            building scalable systems or exploring innovative solutions, I'd
+            Open to remote backend and full-stack opportunities. If you&apos;re
+            building scalable systems or exploring innovative solutions, I&apos;d
             love to discuss architecture.
           </p>
         </div>
