@@ -94,13 +94,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Tauseef Tantary",
-              url: "https://tauseef.in",
-              jobTitle: "Backend-Centric Full-Stack Engineer",
-            }),
+            __html: JSON.stringify(personSchema),
           }}
         />
         <ThemeProvider
