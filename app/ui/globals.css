@@ -126,19 +126,21 @@ html {
 .reveal {
   opacity: 1;
   transform: none;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 /* Only hide if JS is enabled and it hasn't been activated yet */
 .js-enabled .reveal:not(.active) {
   opacity: 0;
   transform: translateY(30px);
+  transition: none !important;
 }
 
 .js-enabled .reveal.active {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
 }
 
 /* Ensure mobile simplicity */

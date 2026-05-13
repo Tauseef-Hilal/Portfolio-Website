@@ -30,7 +30,7 @@ export default function ProfessionalExperienceSection() {
           {workExperience.map((exp, index) => (
             <div
               key={exp.id}
-              className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal"
+              className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal"
               style={{ ["--delay" as any]: `${index * 0.1}s` }}
             >
               {/* Timeline Marker */}

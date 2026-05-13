@@ -15,7 +15,7 @@ export function useScrollReveal() {
     const observerOptions = {
       root: null,
       rootMargin: "0px 0px -50px 0px",
-      threshold: 0,
+      threshold: 0.1,
     };
 
     const handleIntersect = (
@@ -23,7 +23,7 @@ export function useScrollReveal() {
       observer: IntersectionObserver
     ) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
           entry.target.classList.add("active");
           observer.unobserve(entry.target);
         }
@@ -39,12 +39,18 @@ export function useScrollReveal() {
       });
     };
 
-    // Initial scan
-    observeElements();
+    // Use requestAnimationFrame to ensure layout has settled
+    const timeoutId = setTimeout(() => {
+      requestAnimationFrame(() => {
+        observeElements();
+      });
+    }, 100);
 
-    // Re-scan when DOM changes
+    // Re-scan when DOM changes (debounced)
+    let mutationTimeout: NodeJS.Timeout;
     const mutationObserver = new MutationObserver(() => {
-      observeElements();
+      clearTimeout(mutationTimeout);
+      mutationTimeout = setTimeout(observeElements, 200);
     });
 
     mutationObserver.observe(document.body, {
@@ -52,16 +58,11 @@ export function useScrollReveal() {
       subtree: true,
     });
 
-    // Fallback: If elements are still not active after 3 seconds, just show them
-    const fallbackTimer = setTimeout(() => {
-      const stuckElements = document.querySelectorAll(".reveal:not(.active)");
-      stuckElements.forEach(el => el.classList.add("active"));
-    }, 3000);
-
     return () => {
       observerRef.current?.disconnect();
       mutationObserver.disconnect();
-      clearTimeout(fallbackTimer);
+      clearTimeout(timeoutId);
+      clearTimeout(mutationTimeout);
     };
   }, [pathname]); // Re-initialize on pathname change to be absolutely safe
 }
