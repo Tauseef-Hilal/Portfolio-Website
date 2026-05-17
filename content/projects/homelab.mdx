@@ -33,146 +33,139 @@ export const meta = {
 
 # Overview
 
-**Homelab is a personal cloud platform designed to demonstrate production-style backend architecture patterns.**
+Homelab is a high-performance, LAN-first personal cloud platform engineered with a focus on **distributed systems patterns**, **asynchronous processing**, and **security-first resource management**.
 
-The system provides:
-
-- multi-user file storage
-- asynchronous processing pipelines
-- real-time messaging
-
-while remaining **fully self-hostable**.
-
-It was designed as a **systems engineering project** exploring patterns commonly used in distributed backend systems such as:
-
-- job queues
-- worker isolation
-- event-based messaging
-- modular service architecture
-
-### Resume Highlights
-
-- Optimized storage I/O path using BullMQ workers, slashing API latency from ~1200ms to ~40ms (~30×).
-- Engineered batched async bulk operations handling 1k+ files with concurrent execution and job tracking.
-- Implemented Redis + Lua rate limiting, sustaining 900+ req/sec traffic with a stable p95 latency of ~300ms.
-- Built resumable chunked uploads with chunk-level deduplication, reducing duplicate storage by 50%.
-- Developed real-time global chat using WebSockets and Redis Pub/Sub for scalable, low-latency messaging.
-- Secured the platform via JWT authentication with refresh token rotation and multi-device sessions.
-- Architected granular file-sharing controls utilizing bitmask permissions and hierarchical access resolution.
-- Instrumented comprehensive system observability through structured logging and health-check endpoints.
-
-### Core Architectural Goals
-
-- separation of API and background processing
-- scalable real-time communication
-- asynchronous handling of heavy IO operations
-- strong domain contracts shared across services
-- containerized deployment
+This document provides a deep dive into the architectural decisions, data flows, and engineering trade-offs that drive the platform.
 
 ---
 
-# System Goals
+## 1. High-Level Architecture
 
-Homelab aims to simulate a **production-style backend system** similar in spirit to platforms like **Google Drive or Slack**, while remaining self-hostable and understandable.
+Homelab employs a **modular monolith** backend (Express.js) that orchestrates work across a distributed infrastructure. Heavy computational and I/O tasks are decoupled from the request-response cycle via a persistent task queue.
 
-### Primary Goals
+```mermaid
+graph TD
+    Client[Web Client - Next.js] --> Nginx[NGINX Reverse Proxy]
+    Nginx --> API[API Gateway - Express]
 
-- demonstrate asynchronous system design
-- implement modular backend architecture
-- support scalable background processing
-- enable real-time messaging
-- maintain clean service boundaries
+    subgraph "State & Messaging"
+        DB[(PostgreSQL)]
+        Redis[(Redis - BullMQ/Cache)]
+    end
 
----
+    API --> DB
+    API --> Redis
 
-# Architecture Overview
+    subgraph "Worker Tier"
+        IO[IO Worker]
+        TN[Thumbnail Worker]
+    end
 
-### High-Level Architecture
+    Redis -- Jobs --> IO
+    Redis -- Jobs --> TN
 
-```text
-Client (Next.js)
-      ↓
-Reverse Proxy
-      ↓
-API Server (Express + Prisma)
-      ↓
-Redis (Queues + Pub/Sub)
-      ↓
-Workers (BullMQ)
-      ↓
-PostgreSQL + File Storage
+    IO --> DB
+    TN --> DB
+
+    API -- Real-time --> Sockets[Socket.io]
+    Sockets --> Client
 ```
 
-### Key Ideas
+---
 
-- API servers remain **stateless**
-- heavy tasks run **asynchronously in workers**
-- Redis acts as the **event backbone of the system**
-- PostgreSQL stores **metadata** while files live in **storage**
+## 2. Core Pillars & Implementation
+
+### A. Authentication & Session Management
+
+Homelab implements a robust **JWT-based authentication** system with advanced security features:
+
+- **Dual-Token Strategy:** Short-lived Access Tokens (JWT) + Long-lived Refresh Tokens (Database-backed).
+- **Refresh Token Rotation:** Every refresh cycle issues a new token pair, invalidating the old refresh token.
+- **Token Families & Reuse Detection:** All refresh tokens in a "session" belong to a family. If a revoked token is reused (indicating a potential breach), the entire family is immediately invalidated.
+- **Race Condition Resilience:** A **30-second grace period** is implemented for rotated tokens to handle concurrent network requests without forcing a logout.
+- **TFA/OTP:** Multi-factor authentication via email for sensitive operations (login, password reset).
+
+### B. Storage Engine: Content-Addressable Storage (CAS)
+
+Unlike naive storage systems, Homelab uses **CAS principles** to maximize efficiency and data integrity:
+
+- **Blob Deduplication:** Files are broken into chunks, and each chunk is hashed. Identical data across different files points to the same underlying `Blob` record.
+- **Reference Counting:** A `refCount` is maintained for each blob to allow safe garbage collection.
+- **Chunked Upload Pipeline:**
+  1. Client initiates an `UploadSession`.
+  2. Concurrent chunk uploads to the API.
+  3. API verifies hashes and links chunks to `Blobs`.
+  4. Upon completion, chunks are reassembled (virtually) into a `File`.
+- **Bitmask Permissions:** A high-performance bitmask system (`READ`, `WRITE`, `SHARE`, etc.) allows for granular access control and inheritance across the virtual file system.
+
+### C. Distributed Rate Limiting
+
+To prevent abuse and ensure QoS, Homelab implements a **Distributed Token Bucket** algorithm:
+
+- **Atomic Lua Scripts:** Rate limit logic is executed within Redis using Lua to ensure atomicity across distributed API instances.
+- **Layered Scope:** Limits can be applied globally, per-IP, per-User, or per-Resource (e.g., login attempts).
+- **Dynamic TTL:** Redis keys for buckets are automatically cleaned up based on their refill rate.
+
+### D. Asynchronous Task Queue (Workers)
+
+Heavy operations are offloaded to **BullMQ** workers to keep the API responsive:
+
+- **IO Queue:** Handles folder zipping, bulk moves, and large file copies.
+- **Thumbnail Queue:** Generates optimized previews for media files using `sharp`.
+- **Worker Isolation:** Workers run as separate processes (or containers), allowing them to be scaled independently of the API.
 
 ---
 
-# Key Engineering Problems
+## 3. Data Schema & Integrity
 
-## Problem: Long Running File Operations
+The system uses **PostgreSQL with Prisma ORM** for structured metadata.
 
-Operations such as:
-
-- copying large folders
-- generating archives
-- creating thumbnails
-
-can **block the API server** and degrade system performance.
-
-### Solution
-
-```text
-API request
-      ↓
-enqueue background job
-      ↓
-worker processes task
-      ↓
-job status updated in database
-```
-
-### Benefits
-
-- prevents API blocking
-- allows retry strategies
-- enables progress tracking
+| Model                   | Purpose                                                                      |
+| :---------------------- | :--------------------------------------------------------------------------- |
+| **User**                | Identity, Role-based access, Storage quotas.                                 |
+| **Folder/File**         | Virtual File System hierarchy with optimized indexes for path-based lookups. |
+| **Blob/FileChunk**      | The backbone of the CAS engine, enabling deduplication.                      |
+| **UserShare/LinkShare** | Granular access control mapping users/tokens to resources.                   |
+| **Job**                 | Persistence for background tasks, enabling progress tracking and retries.    |
 
 ---
 
-# Deployment
+## 4. Real-time Infrastructure
 
-Homelab supports **containerized deployment**.
+Homelab leverages **Socket.io** for bidirectional communication:
 
-### Typical Docker Compose Stack
-
-- api-server
-- io-workers
-- thumbnail-worker
-- redis
-- postgres
-- client
-
-### Benefits
-
-- reproducible environments
-- easy local deployment
-- scalable worker architecture
+- **Broadcast System:** Instant updates for chat and system announcements.
+- **Job Notifications:** Real-time feedback to the UI when background tasks (e.g., thumbnail generation) complete.
+- **Presence:** (Planned) tracking active users in shared folders.
 
 ---
 
-# Why This Project Exists
+## 5. Engineering Trade-offs
 
-Homelab was built as an exploration of **backend system architecture beyond traditional CRUD applications**.
+### Local Filesystem vs. S3
 
-Instead of focusing on UI complexity, the project emphasizes **infrastructure concerns**, such as:
+- **Decision:** Initial implementation uses Local Storage with an abstraction layer.
+- **Rationale:** Prioritizes "LAN-first" performance and simplicity for self-hosting.
+- **Future-Proofing:** The `StoragePlatform` interface allows for seamless S3/Minio integration.
 
-- background job processing
-- real-time messaging
-- modular service design
+### Redis vs. Kafka
 
-The goal was to design and implement a system that **resembles real-world backend platforms** while remaining understandable and self-hostable.
+- **Decision:** Redis (BullMQ).
+- **Rationale:** Lower operational complexity for self-hosted environments while still providing the throughput required for high-frequency small tasks (like thumbnail generation).
+
+---
+
+## 6. Security Posture
+
+- **Password Hashing:** Argon2/Bcrypt for secure credential storage.
+- **Data Isolation:** Strict tenant isolation ensured at the database query level (Prisma middleware/services).
+- **Auditability:** Every major file operation is tracked via `Job` records and system logs.
+- **Least Privilege:** Default-private visibility for all resources.
+
+---
+
+## 7. Scalability Roadmap
+
+1. **Vertical Scaling:** Increase worker concurrency for higher IO throughput.
+2. **Horizontal Scaling:** Deploy multiple API instances behind NGINX; Redis handles shared state.
+3. **Storage Decoupling:** Move from local volumes to distributed object storage (S3) for multi-node deployments.
